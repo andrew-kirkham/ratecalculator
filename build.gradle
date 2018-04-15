@@ -4,8 +4,10 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
+apply plugin: 'application'
 apply plugin: 'war'
-apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -15,26 +17,25 @@ repositories {
     mavenCentral()
 }
 
-gretty {
-    contextPath = '/'
-}
+mainClassName = "com.Application"
 
 dependencies {
     providedCompile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
 
+    //swagger documentation
     compile 'io.swagger:swagger-jersey2-jaxrs:1.5.12'
 
-    compile 'org.glassfish.jersey.core:jersey-server:2.22.2'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    //jetty server
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.9.v20180320'
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.9.v20180320'
 
+    //logging framework
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
     //lombok boilerplate generation
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
     //jackson json
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.5'
-    // Jersey core Servlet 3.x implementation
-    compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.2'
+
     // Jersey Test Framework — Grizzly2 container
     testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:2.22.2'
-
-
 }

@@ -7,7 +7,7 @@ def ENVIRONMENT = ""
 def HOSTNAME = hostname
 
 appenderList.add("CONSOLE")
-
+appenderList.add("ROLLING")
 appender("CONSOLE", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
         pattern = "%d{yyyy-MM-dd'T'HH:mm:ss.SSS}|%-5level|${HOSTNAME}|${APP}|%logger{36}|%X{requestId}|%msg%n"
@@ -15,7 +15,7 @@ appender("CONSOLE", ConsoleAppender) {
 }
 
 appender("ROLLING", RollingFileAppender) {
-    file = "${WEBAPP_DIR}/logs/${APP}-${ENVIRONMENT}.log"
+    file = "logs/${APP}-${ENVIRONMENT}.log"
     encoder(PatternLayoutEncoder) {
         Pattern = "%d{yyyy-MM-dd'T'HH:mm:ss.SSS}|%-5level|${HOSTNAME}|${APP}|%logger{36}|%X{requestId}|%msg%n"
     }
