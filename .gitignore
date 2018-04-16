@@ -98,4 +98,15 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 
-.idea
+### Intellij Idea
+.idea/
+out/
+*.ipr
+*.iws
+*.iml
+*.ids
+
+### VSCode
+.vscode/
+.project
+.classpath
