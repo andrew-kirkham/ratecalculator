@@ -37,6 +37,9 @@ dependencies {
     compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: '2.9.5'
     compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-xml-provider', version: '2.9.5'
 
+    testCompile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.22.2'
     // Jersey Test Framework — Grizzly2 container
-    testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:2.22.2'
+    testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version:'2.22.2'
+    testCompile group: 'org.glassfish.jersey.bundles.repackaged', name: 'jersey-guava', version: '2.22.2'
+
 }
