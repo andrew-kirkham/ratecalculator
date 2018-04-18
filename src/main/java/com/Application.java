@@ -1,6 +1,8 @@
 package com;
 
+import com.config.ApplicationMetrics;
 import com.controllers.ApiController;
+import com.handlers.HealthCheckHandler;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import org.eclipse.jetty.server.Server;
@@ -31,10 +33,16 @@ public class Application {
         // Handler for Entity Browser and Swagger
         handlers.addHandler(buildContext());
 
+        registerMetrics();
+
         Server server = new Server(8080);
         server.setHandler(handlers);
         server.start();
         server.join();
+    }
+
+    private static void registerMetrics() {
+        ApplicationMetrics.getHealthChecks().register("config", new HealthCheckHandler());
     }
 
     private static ContextHandler buildContext() {
@@ -69,4 +77,5 @@ public class Application {
         beanConfig.setDescription("Description");
         beanConfig.setTitle("TOPIC");
     }
+
 }

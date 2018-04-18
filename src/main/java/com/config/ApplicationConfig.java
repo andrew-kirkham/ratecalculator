@@ -22,6 +22,7 @@ public class ApplicationConfig {
     //day, valid rates for that day
     private transient Map<DayOfWeek, List<RateRange>> rateRanges = new HashMap<>();
 
+
     public ApplicationConfig(final URL configLocation) {
         try {
             readRateConfig(configLocation);
@@ -55,6 +56,7 @@ public class ApplicationConfig {
     public Map<DayOfWeek, List<RateRange>> getRateRanges() {
         return rateRanges;
     }
+
 }
 
 
