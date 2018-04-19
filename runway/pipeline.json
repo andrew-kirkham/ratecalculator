@@ -1,0 +1,10 @@
+{
+  "deployment": "spinnaker",
+  "base": "tomcat8.5_openjdk",
+  "documentation": "https://github.com/andrew-kirkham/ratecalculator",
+  "env": [
+    "dev",
+    "stage",
+    "prod"
+  ]
+}
