@@ -36,7 +36,8 @@ dependencies {
     compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.9.v20180320'
 
     //logging framework
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+
     //lombok boilerplate generation
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
     //jackson json and xml
