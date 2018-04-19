@@ -4,12 +4,15 @@ os: linux
 files:
   - source: /target/ROOT.war
     destination: /tmp/staging/
+  - source: /scripts/configure_http_port.xsl
+    destination: /tmp/staging/
 
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
       timeout: 300
       runas: root
+  ApplicationStart:
     - location: scripts/start_server
       timeout: 300
       runas: root

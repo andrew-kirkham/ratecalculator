@@ -17,6 +17,12 @@ repositories {
     mavenCentral()
 }
 
+
+war {
+    archiveName = "ROOT.war"
+    destinationDir = new File("${rootDir}/target/")
+}
+
 mainClassName = "com.Application"
 
 dependencies {
