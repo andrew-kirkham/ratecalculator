@@ -48,7 +48,7 @@ cat > /etc/init.d/tomcat8 <<'EOF'
 # processname: tomcat8
 PATH=$JAVA_HOME/bin:$PATH
 export PATH
-CATALINA_HOME='/usr/share/tomcat8-codedeploy'
+CATALINA_HOME='/usr/share/tomcat8'
 case $1 in
 start)
 sh $CATALINA_HOME/bin/startup.sh
