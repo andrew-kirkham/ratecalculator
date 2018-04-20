@@ -21,6 +21,7 @@ Both JSON and XML are supported.
 ### Local builds
 Locally this project can be built using gradle. 
 
+* `gradle appRun` will start a hot-swap instance of jetty
 * `gradle war` will build the war file used for deployment
 * `gradle test` will execute the tests
 
