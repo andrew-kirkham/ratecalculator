@@ -10,5 +10,5 @@ RUN apt-get update \
         openjdk-8-jdk
 RUN ./gradlew war
 
-RUN rm -rf /usr/local/tomcat/ROOT
+RUN rm -rf /usr/local/tomcat/webapps/*
 RUN cp /build/target/ROOT.war /usr/local/tomcat/webapps/.

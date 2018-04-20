@@ -23,32 +23,28 @@ war {
     destinationDir = new File("${rootDir}/target/")
 }
 
-mainClassName = "com.Application"
-
 dependencies {
-    providedCompile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
-
     //swagger documentation
-    compile 'io.swagger:swagger-jersey2-jaxrs:1.5.12'
-
-    //jetty server
-    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.9.v20180320'
-    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.9.v20180320'
+    compile group: 'io.swagger', name: 'swagger-jersey2-jaxrs', version: '1.5.19'
 
     //logging framework
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
 
+    //javax api - not included with tomcat/jdk by default
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1'
+
     //lombok boilerplate generation
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
-    //jackson json and xml
-    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: '2.9.5'
-    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-xml-provider', version: '2.9.5'
 
     //metrics
     compile group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.0.2'
     compile group: 'io.dropwizard.metrics', name: 'metrics-healthchecks', version: '4.0.2'
 
-    testCompile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.22.2'
+    //jackson json
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.25.1'
+    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-base', version: '2.9.5'
+    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: '2.9.5'
+
     // Jersey Test Framework — Grizzly2 container
     testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version:'2.22.2'
     testCompile group: 'org.glassfish.jersey.bundles.repackaged', name: 'jersey-guava', version: '2.22.2'
