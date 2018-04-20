@@ -38,8 +38,10 @@ tar xzf $TOMCAT8_CORE_TAR_FILENAME
 # Copy over to the CATALINA_HOME
 cp -r /tmp/$TOMCAT8_CORE_UNPACKED_DIRNAME/* $CATALINA_HOME
 
-# Install Java if not yet installed
-{ which java; } || { yum install java -y; }
+# Install Java8
+#remove existing java7 if exists
+{ which java; } || { yum remove java -y; }
+yum install java-1.8.0 -y
 
 # Create the service init.d script
 cat > /etc/init.d/tomcat8 <<'EOF'
