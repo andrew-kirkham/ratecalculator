@@ -13,7 +13,7 @@ hooks:
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: scripts/write_codedeploy_config.sh
+    - location: scripts/write_codedeploy_config
     - location: scripts/start_server
       timeout: 300
       runas: root
