@@ -22,7 +22,6 @@ Both JSON and XML are supported.
 ### Local builds
 Locally this project can be built using gradle. 
 
-* `gradle run` will run the application on localhost
 * `gradle war` will build the war file used for deployment
 * `gradle test` will execute the tests
 
