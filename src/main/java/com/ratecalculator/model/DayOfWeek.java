@@ -11,7 +11,7 @@ public enum DayOfWeek {
 
     private String abbreviation;
 
-    DayOfWeek(String abbr) {
+    DayOfWeek(final String abbr) {
         this.abbreviation = abbr;
     }
 

@@ -1,6 +1,5 @@
 package com.ratecalculator.model.exceptions;
 
-
 import java.net.HttpURLConnection;
 
 public class RateNotAvailableException extends ApplicationException {

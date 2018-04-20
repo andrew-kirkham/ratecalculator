@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @ApiModel
 public class ApplicationErrorMessage {
-    private String message;
-    private int code;
+    private final transient String message;
+    private final transient int code;
 
     public ApplicationErrorMessage(final ApplicationException ex) {
         this.message = ex.getMessage();

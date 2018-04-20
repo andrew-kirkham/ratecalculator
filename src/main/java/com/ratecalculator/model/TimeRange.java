@@ -7,8 +7,8 @@ import java.time.LocalTime;
 @Data
 public class TimeRange {
 
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private transient LocalTime startTime;
+    private transient LocalTime endTime;
 
     public TimeRange(final LocalTime startTime, final LocalTime endTime) {
         this.startTime = startTime;

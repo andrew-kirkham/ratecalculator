@@ -1,6 +1,7 @@
 package com.ratecalculator.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ratecalculator.model.ConfigNames;
 import com.ratecalculator.model.DayOfWeek;
 import com.ratecalculator.model.RateRange;
 import com.ratecalculator.model.config.RateConfig;
@@ -33,7 +34,7 @@ public class ApplicationConfig {
 
     public static ApplicationConfig getInstance() {
         if (instance == null) {
-            instance = new ApplicationConfig(ApplicationConfig.class.getResource("/rates.json"));
+            instance = new ApplicationConfig(ApplicationConfig.class.getResource(ConfigNames.RATE_CONFIG.getFileName()));
         }
         return instance;
     }

@@ -5,10 +5,10 @@ import com.ratecalculator.config.ApplicationConfig;
 
 public class HealthCheckHandler extends HealthCheck {
 
-    private ApplicationConfig config = ApplicationConfig.getInstance();
+    private final transient ApplicationConfig config = ApplicationConfig.getInstance();
 
     @Override
-    protected Result check() throws Exception {
+    protected Result check() {
         if (config.getRateRanges().isEmpty()){
             return HealthCheck.Result.unhealthy("Unable to load config files or config files empty");
         } else {
