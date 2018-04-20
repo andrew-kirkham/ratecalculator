@@ -38,7 +38,7 @@ public class MetricsController {
     }
 
     @GET
-    @Path("/healthcheck")
+    @Path("/healthCheck")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "get health check")
     public SortedMap<String, HealthCheck.Result> getHealth() {
