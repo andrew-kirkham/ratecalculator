@@ -1,4 +1,4 @@
-![](https://travis-ci.org/andrew-kirkham/ratecalculator.svg?branch=master)
+![https://travis-ci.org/andrew-kirkham/ratecalculator](https://travis-ci.org/andrew-kirkham/ratecalculator.svg?branch=master)
 
 # RateCalculator
 
