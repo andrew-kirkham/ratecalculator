@@ -9,6 +9,7 @@ import org.junit.Test;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Map;
 
 public class ApiControllerIntegrationTest extends IntegrationTestHelper {
 
@@ -66,5 +67,11 @@ public class ApiControllerIntegrationTest extends IntegrationTestHelper {
     public void postValidXmlBadRange() {
         Response response = target("/rate").request().post(Entity.entity(invalidRange, MediaType.APPLICATION_XML_TYPE));
         Assert.assertEquals(404, response.getStatus());
+    }
+
+    @Test
+    public void getAllRates() {
+        Map response = target("/allRates").request().get(Map.class);
+        Assert.assertEquals(7, response.keySet().size());
     }
 }

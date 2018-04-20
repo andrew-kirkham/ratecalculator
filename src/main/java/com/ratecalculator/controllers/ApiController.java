@@ -3,8 +3,11 @@ package com.ratecalculator.controllers;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
+import com.ratecalculator.config.ApplicationConfig;
 import com.ratecalculator.config.ApplicationMetrics;
 import com.ratecalculator.handlers.ApiHandler;
+import com.ratecalculator.model.DayOfWeek;
+import com.ratecalculator.model.RateRange;
 import com.ratecalculator.model.exceptions.ApplicationException;
 import com.ratecalculator.model.rest.RangeRequest;
 import io.swagger.annotations.Api;
@@ -15,11 +18,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.net.HttpURLConnection;
+import java.util.List;
+import java.util.Map;
 
 import static com.codahale.metrics.MetricRegistry.name;
 
@@ -57,6 +63,20 @@ public class ApiController {
         LOG.info("getting rate for time={}", time);
         try {
             return apiHandler.calculateRate(time);
+        } finally {
+            context.stop();
+        }
+    }
+
+    @GET
+    @Path("/allRates")
+    @ApiOperation(value = "get all rates configured")
+    @Produces(value = {MediaType.APPLICATION_JSON})
+    public Map<DayOfWeek, List<RateRange>> getAllRates() {
+        requests.mark();
+        Timer.Context context = responses.time();
+        try {
+            return ApplicationConfig.getInstance().getRateRanges();
         } finally {
             context.stop();
         }
