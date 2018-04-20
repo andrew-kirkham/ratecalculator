@@ -1,5 +1,10 @@
 package com.ratecalculator.model;
 
+/**
+ * ConfigNames
+ *
+ * Config file names as they are referenced in the resources folder
+ */
 public enum ConfigNames {
     RATE_CONFIG("/rates.json");
 

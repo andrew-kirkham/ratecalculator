@@ -15,6 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Application Config
+ * Contains all configuration for this application
+ * Config files are json files added to src/main/resources
+ */
 public class ApplicationConfig {
 
     private static final ObjectMapper mapper = new ObjectMapper();

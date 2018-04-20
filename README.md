@@ -1,4 +1,4 @@
-![https://travis-ci.org/andrew-kirkham/ratecalculator](https://travis-ci.org/andrew-kirkham/ratecalculator.svg?branch=master)
+[![Build Status](https://travis-ci.org/andrew-kirkham/ratecalculator.svg?branch=master)](https://travis-ci.org/andrew-kirkham/ratecalculator)
 
 # RateCalculator
 
@@ -7,13 +7,12 @@ This project calculates parking rates for a given time interval.
 
 
 ## Endpoints
-This application has two roots: `docs` and `api`
-* `<base_url>/docs` is the Swagger documentation for `<base_url>/api`
+* `<base_url>/` is the Swagger documentation for `<base_url>/api`
 * `<base_url>/api` is the endpoint for all actions 
     * `<base_url>/api/metrics` provides statistics and healthchecks about the application
 
 ## Documentation
-Full documentation can be found by visiting `<base_url>/docs` and viewing the swagger documentation.
+Full documentation can be found by visiting `<base_url>` and viewing the swagger documentation.
 This documentation outlines the expected request response types.
 Both JSON and XML are supported.
 

@@ -3,6 +3,10 @@ package com.ratecalculator.config;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.health.HealthCheckRegistry;
 
+/**
+ * ApplicationMetrics
+ * Static Registries for metrics
+ */
 public class ApplicationMetrics {
 
     private static final MetricRegistry metrics = new MetricRegistry();

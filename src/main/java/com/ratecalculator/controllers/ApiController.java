@@ -23,6 +23,11 @@ import java.net.HttpURLConnection;
 
 import static com.codahale.metrics.MetricRegistry.name;
 
+/**
+ * ApiController
+ *
+ * Main controller for the api
+ */
 @Path("/")
 @Api(value = "api")
 public class ApiController {
@@ -51,7 +56,7 @@ public class ApiController {
         Timer.Context context = responses.time();
         LOG.info("getting rate for time={}", time);
         try {
-            return apiHandler.handleRate(time);
+            return apiHandler.calculateRate(time);
         } finally {
             context.stop();
         }

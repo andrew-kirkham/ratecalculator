@@ -13,8 +13,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * RateConfigParser
+ *
+ * Parse the rates.json config file and convert it to more easily usable structure
+ */
 public class RateConfigParser {
 
+    /**
+     * Convert a rateConfig structure to a Map. This does NOT validate the rateconfig
+     *
+     * @param rateConfig - the json config
+     * @return Map<DayOfWeek, List of rates for that day>
+     */
     public Map<DayOfWeek, List<RateRange>> convertRateConfig(final RateConfig rateConfig) {
         final Map<DayOfWeek, List<RateRange>> rateRanges = new HashMap<>();
         for (final Rate rate : rateConfig.getRates()) {
@@ -31,8 +42,9 @@ public class RateConfigParser {
     }
 
     private void parseDay(final Map<DayOfWeek, List<RateRange>> rateRanges, final Rate rate, final String day) {
-        final RateRange r = new RateRange();
-        r.setPrice(rate.getPrice());
+        //TODO add validation to the structure and to times
+        final RateRange range = new RateRange();
+        range.setPrice(rate.getPrice());
 
         final String[] times = rate.getTimes().split("-");
 
@@ -40,10 +52,10 @@ public class RateConfigParser {
         final LocalTime start = LocalTime.parse(times[0], formatter);
         final LocalTime end = LocalTime.parse(times[1], formatter);
 
-        r.setRangeRateIsValidFor(new TimeRange(start, end));
+        range.setRangeRateIsValidFor(new TimeRange(start, end));
 
         final List<RateRange> ranges = rateRanges.getOrDefault(DayOfWeek.fromName(day), new ArrayList<>());
-        ranges.add(r);
+        ranges.add(range);
         rateRanges.put(DayOfWeek.fromName(day), ranges);
     }
 }

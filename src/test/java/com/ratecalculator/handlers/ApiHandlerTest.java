@@ -19,7 +19,7 @@ public class ApiHandlerTest {
         r.setFromTime(from);
         r.setToTime(to);
 
-        int rate = handler.handleRate(r);
+        int rate = handler.calculateRate(r);
         Assert.assertEquals(1500, rate);
     }
 
@@ -31,7 +31,7 @@ public class ApiHandlerTest {
         r.setFromTime(from);
         r.setToTime(to);
 
-        handler.handleRate(r);
+        handler.calculateRate(r);
         //asserting exception thrown
     }
 
@@ -43,7 +43,7 @@ public class ApiHandlerTest {
         r.setFromTime(from);
         r.setToTime(to);
 
-        handler.handleRate(r);
+        handler.calculateRate(r);
         //asserting exception thrown
     }
 
@@ -56,7 +56,7 @@ public class ApiHandlerTest {
         r.setFromTime(from);
         r.setToTime(to);
 
-        handler.handleRate(r);
+        handler.calculateRate(r);
         //asserting exception thrown
     }
 }

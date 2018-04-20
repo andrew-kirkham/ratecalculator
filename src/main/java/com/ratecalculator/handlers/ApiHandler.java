@@ -16,14 +16,27 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
 
+/**
+ * ApiHandler
+ *
+ * Handle requests from the ApiController
+ */
 public class ApiHandler {
     private final static Logger LOG = LoggerFactory.getLogger(ApiHandler.class);
     private ApplicationConfig appConfig = ApplicationConfig.getInstance();
 
-    public int handleRate(final RangeRequest rangeRequest) throws ApplicationException {
+    /**
+     * Calculate rate for a given rangeRequest
+     * @param rangeRequest - the user input
+     * @return - the rate for the range
+     * @throws ApplicationException - Invalid user input
+     */
+    public int calculateRate(final RangeRequest rangeRequest) throws ApplicationException {
+        //validate input
         checkForNull(rangeRequest);
         final LocalDateTime fromTime = checkIfValidInput(rangeRequest.getFromTime());
         final LocalDateTime toTime = checkIfValidInput(rangeRequest.getToTime());
+        //cant calculate backwards times
         checkFromTimeBeforeToTime(fromTime, toTime);
 
         final TimeRange r = new TimeRange(fromTime.toLocalTime(), toTime.toLocalTime());
@@ -33,7 +46,7 @@ public class ApiHandler {
     }
 
     private void checkForNull(final RangeRequest rangeRequest) throws InvalidInputException {
-        if (rangeRequest == null) {
+        if (rangeRequest == null || rangeRequest.getFromTime() == null || rangeRequest.getToTime() == null) {
             throw new InvalidInputException("rate must be supplied");
         }
     }
@@ -48,7 +61,7 @@ public class ApiHandler {
             LOG.info("Found rate. Range={} rate={}", timeRange, first.get().getPrice());
             return first.get().getPrice();
         }
-        throw new RateNotAvailableException("");
+        throw new RateNotAvailableException("A rate for the time range does not exist");
     }
 
     private void checkFromTimeBeforeToTime(final LocalDateTime fromTime, final LocalDateTime toTime) throws InvalidInputException {

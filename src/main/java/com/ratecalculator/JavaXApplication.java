@@ -12,6 +12,11 @@ import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * JavaXApplication
+ *
+ * Initial setup for the JavaX application
+ */
 @ApplicationPath("/")
 public class JavaXApplication extends Application {
 
@@ -20,10 +25,12 @@ public class JavaXApplication extends Application {
         setupSwagger();
     }
 
+    //start health checks
     private static void registerMetrics() {
         ApplicationMetrics.getHealthChecks().register("config", new HealthCheckHandler());
     }
 
+    //setup swagger bean
     private void setupSwagger() {
         BeanConfig beanConfig = new BeanConfig();
         beanConfig.setVersion("1.0.2");
@@ -34,14 +41,17 @@ public class JavaXApplication extends Application {
         beanConfig.setScan(true);
     }
 
+    //register classes
     @Override
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> classes = new HashSet<>();
-        // register root resource
+
+        //register rest components
         classes.add(ApiController.class);
         classes.add(AppExceptionMapper.class);
         classes.add(MetricsController.class);
 
+        //register swagger
         classes.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
         classes.add(io.swagger.jaxrs.listing.ApiListingResource.class);
 
