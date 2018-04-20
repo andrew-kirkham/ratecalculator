@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.ratecalculator.protobuf";
+option java_outer_classname = "RateProtobuf";
+
+package protobuf;
+
+service RateService {
+    rpc GetRate (RateRequest) returns (Rate) {}
+}
+
+message RateRequest {
+    string fromTime = 1;
+    string toTime = 2;
+}
+
+message Rate {
+    int32 rate = 1;
+}
